@@ -2,7 +2,7 @@
     <div class="col-xl-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="page-title"> <i class="mdi mdi-apple-keyboard-command title_icon"></i> <?php echo $page_title; ?> </h4>
+                <h4 class="page-title"> <i class="mdi mdi-apple-keyboard-command title_icon"></i>  Instructor / <?php echo $page_title; ?>  </h4>
             </div> <!-- end card body-->
         </div> <!-- end card -->
     </div><!-- end col-->
@@ -12,7 +12,7 @@
         <div class="card">
             <div class="card-body">
 
-                <h4 class="header-title mb-3"><?php echo get_phrase('student_add_form'); ?></h4>
+                <h4 class="header-title mb-3">  INSTRUCTOR / <?php echo get_phrase('student_add_form'); ?></h4>
 
                 <form class="required-form" action="<?php echo site_url('admin/users/add'); ?>" enctype="multipart/form-data" method="post">
                     <div id="progressbarwizard">

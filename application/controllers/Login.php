@@ -39,7 +39,7 @@ class Login extends CI_Controller {
             $this->session->set_userdata('role_id', $row->role_id);
             $this->session->set_userdata('role', get_user_role('user_role', $row->id));
             $this->session->set_userdata('name', $row->first_name.' '.$row->last_name);
-            $this->session->set_flashdata('flash_message', get_phrase('welcom').' '.$row->first_name.' '.$row->last_name);
+       //     $this->session->set_flashdata('flash_message', get_phrase('welcom').' '.$row->first_name.' '.$row->last_name);
             if ($row->role_id == 1) {
                 $this->session->set_userdata('admin_login', '1');
                 redirect(site_url('admin/dashboard'), 'refresh');
@@ -48,7 +48,7 @@ class Login extends CI_Controller {
                 redirect(site_url('home'), 'refresh');
             }
         }else {
-            $this->session->set_flashdata('error_message',get_phrase('invalid_login_credentials'));
+          //  $this->session->set_flashdata('error_message',get_phrase('invalid_login_credentials'));
             redirect(site_url('home/login'), 'refresh');
 
         }
@@ -126,11 +126,11 @@ class Login extends CI_Controller {
                 $this->email_model->send_email_verification_mail($data['email'], $verification_code);
                 $this->session->set_flashdata('flash_message', get_phrase('your_registration_has_been_successfully_done').'. '.get_phrase('please_check_your_mail_inbox_to_verify_your_email_address').'.');
             }else {
-                $this->session->set_flashdata('flash_message', get_phrase('your_registration_has_been_successfully_done'));
+               // $this->session->set_flashdata('flash_message', get_phrase('your_registration_has_been_successfully_done'));
             }
 
         }else {
-            $this->session->set_flashdata('error_message', get_phrase('email_duplication'));
+           // $this->session->set_flashdata('error_message', get_phrase('email_duplication'));
         }
         redirect(site_url('home'), 'refresh');
     }
@@ -166,14 +166,14 @@ class Login extends CI_Controller {
             $this->db->update('users' , array('password' => sha1($new_password)));
             // send new password to user email
             $this->email_model->password_reset_email($new_password, $email);
-            $this->session->set_flashdata('flash_message', get_phrase('please_check_your_email_for_new_password'));
+          //  $this->session->set_flashdata('flash_message', get_phrase('please_check_your_email_for_new_password'));
             if ($from == 'backend') {
                 redirect(site_url('login'), 'refresh');
             }else {
                 redirect(site_url('home'), 'refresh');
             }
         }else {
-            $this->session->set_flashdata('error_message', get_phrase('password_reset_failed'));
+          //  $this->session->set_flashdata('error_message', get_phrase('password_reset_failed'));
             if ($from == 'backend') {
                 redirect(site_url('login'), 'refresh');
             }else {

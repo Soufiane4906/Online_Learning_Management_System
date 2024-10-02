@@ -651,5 +651,7 @@
     "disable": "Disable",
     "user_added_successfully": "User added successfully",
     "welcom": "Welcom",
-    "no_records_found": "No records found"
+    "no_records_found": "No records found",
+    "role": "Role",
+    "why_choose_us": "Why choose us"
 }

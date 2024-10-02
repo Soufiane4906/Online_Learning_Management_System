@@ -45,6 +45,8 @@ class User_model extends CI_Model {
             $data['social_links'] = json_encode($social_link);
             $data['biography'] = $this->input->post('biography');
             $data['role_id'] = 2;
+            $data['isInstructor'] = $this->input->post('role');
+
             $data['date_added'] = strtotime(date("Y-m-d H:i:s"));
             $data['wishlist'] = json_encode(array());
             $data['watch_history'] = json_encode(array());

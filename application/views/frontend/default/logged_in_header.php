@@ -7,48 +7,55 @@ $user_details = $this->user_model->get_user($this->session->userdata('user_id'))
             <div class="col">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-                    <ul class="mobile-header-buttons">
-                        <li><a class="mobile-nav-trigger" href="#mobile-primary-nav">Menu<span></span></a></li>
-                        <li><a class="mobile-search-trigger" href="#mobile-search">Search<span></span></a></li>
-                    </ul>
+                <ul class="mobile-header-buttons">
+    <li><a class="mobile-nav-trigger" href="#mobile-primary-nav">Menu<span></span></a></li>
+    <li><a class="mobile-search-trigger" href="#mobile-search">Search<span></span></a></li>
+</ul>
 
-                    <a href="<?php echo site_url(''); ?>" class="navbar-brand" href="#">
-                        <img src="<?php echo base_url().'uploads/system/logo-dark.png'; ?>" alt="" height="35">
-                    </a>
+<a href="<?php echo site_url(''); ?>" class="navbar-brand" href="#">
+    <img src="<?php echo base_url().'uploads/system/logo-dark.png'; ?>" alt="" height="35">
+</a>
 
-                    <?php include 'menu.php'; ?>
+<?php include 'menu.php'; ?>
+<?php if ($user_details['isInstructor'] == 0): ?>
 
+<form class="inline-form" action="<?php echo site_url('home/search'); ?>" method="get" style="width: 100%;">
+    <div class="input-group search-box mobile-search">
+        <input type="text" name='query' class="form-control" placeholder="<?php echo get_phrase('search_for_courses'); ?>">
+        <div class="input-group-append">
+            <button class="btn" type="submit"><i class="fas fa-search"></i></button>
+        </div>
+    </div>
+</form>
+<?php endif; ?>
 
-                    <form class="inline-form" action="<?php echo site_url('home/search'); ?>" method="get" style="width: 100%;">
-                        <div class="input-group search-box mobile-search">
-                            <input type="text" name = 'query' class="form-control" placeholder="<?php echo get_phrase('search_for_courses'); ?>">
-                            <div class="input-group-append">
-                                <button class="btn" type="submit"><i class="fas fa-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
+<?php if ($user_details['isInstructor'] == 1): ?>
+    <!-- Afficher uniquement la section instructeur -->
+    <div class="instructor-box menu-icon-box">
+        <div class="icon">
+            <a href="<?php echo site_url('user'); ?>" style="border: 1px solid transparent; margin: 10px 10px; font-size: 14px; width: 100%; border-radius: 0;">
+                <?php echo get_phrase('instructor'); ?>
+            </a>
+        </div>
+    </div>
+<?php else: ?>
+    <!-- Afficher tout sauf la section instructeur -->
+    <div class="instructor-box menu-icon-box">
+        <div class="icon">
+            <a href="<?php echo site_url('home/my_courses'); ?>" style="border: 1px solid transparent; margin: 10px 10px; font-size: 14px; width: 100%; border-radius: 0; min-width: 100px;">
+                <?php echo get_phrase('my_courses'); ?>
+            </a>
+        </div>
+    </div>
 
-                    <?php if (get_settings('allow_instructor') == 1): ?>
-                        <div class="instructor-box menu-icon-box">
-                            <div class="icon">
-                                <a href="<?php echo site_url('user'); ?>" style="border: 1px solid transparent; margin: 10px 10px; font-size: 14px; width: 100%; border-radius: 0;"><?php echo get_phrase('instructor'); ?></a>
-                            </div>
-                        </div>
-                    <?php endif; ?>
+    <div class="wishlist-box menu-icon-box" id="wishlist_items">
+        <?php include 'wishlist_items.php'; ?>
+    </div>
 
-                    <div class="instructor-box menu-icon-box">
-                        <div class="icon">
-                            <a href="<?php echo site_url('home/my_courses'); ?>" style="border: 1px solid transparent; margin: 10px 10px; font-size: 14px; width: 100%; border-radius: 0; min-width: 100px;"><?php echo get_phrase('my_courses'); ?></a>
-                        </div>
-                    </div>
-
-                    <div class="wishlist-box menu-icon-box" id = "wishlist_items">
-                        <?php include 'wishlist_items.php'; ?>
-                    </div>
-
-                    <div class="cart-box menu-icon-box" id = "cart_items">
-                        <?php include 'cart_items.php'; ?>
-                    </div>
+    <div class="cart-box menu-icon-box" id="cart_items">
+        <?php include 'cart_items.php'; ?>
+    </div>
+<?php endif; ?>
 
                     <?php //include 'notifications.php'; ?>
 

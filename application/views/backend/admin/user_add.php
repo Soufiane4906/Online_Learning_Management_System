@@ -161,6 +161,17 @@
                                 </div> <!-- end row -->
                             </div>
                             <div class="tab-pane" id="finish">
+                            <div class="form-group row mb-3">
+    <label class="col-md-3 col-form-label" for="role"><?php echo get_phrase('role'); ?><span class="required">*</span></label>
+    <div class="col-md-9">
+        <select class="form-control" id="role" name="role" required>
+            <!-- <option value="1"><?php echo get_phrase('Admin'); ?></option> -->
+            <option value="1"><?php echo get_phrase('Instructor'); ?></option>
+            <option value="0"><?php echo get_phrase('Student'); ?></option>
+        </select>
+    </div>
+</div>
+
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="text-center">
